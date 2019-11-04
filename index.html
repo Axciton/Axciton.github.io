@@ -6,7 +6,11 @@
 <p>
 Tired of playing the same meta decks again and again. Here are some totally unique randomly generated decks. Have fun!
 </p>
-
+<p>
+<input type="checkbox" name="aaoption" id="aaoption" checked>
+check that at least one unit shoots up
+</input>
+</p>
 <div id="GDI"></div>
 <p>
 <b>GDI</b>
@@ -61,6 +65,10 @@ var gdiunits=['Riflemen','Missle Squad',' MG Squad','Jump Jet Troopers','Shockwa
 var nodcommanders = ['Seth', 'Kane','Jade','Oxanna'];
 var nodunits=['Militant','Laser Squad','Fanatic','Scavenger','Flame Troopers','Scarabs','Chemical Warriors','Mutant Marauder','Cyberwheel','Attack Bikes','Buggy','Chem Buggy','Scorpion Tank','Tick Tank','Giga-Cannon','Stealth Tank','Laser Drone','Venom','Banshee','Inferno','Phantom','Widowmaker','Flame Tank','Centurion','Confessor','Artillery','Basilisk','Rockworm','Cyborg','Avatar'];
 
+var aaunits= new Set(['Missle Squad', 'Rhino','Pitbull','Slingshot','A.P.C.','Talon','Hammerhead','Wolverine','Zone Trooper','Sandstorm','Mammonth Tank'
+,'Laser Squad','Scavenger','Scarabs','Attack Bikes','Buggy','Stealth Tank','Banshee','Phantom','Widowmaker','Confessor','Cyborg'
+])
+
 
 function randInt(i,j) {
   return i + Math.floor(Math.random() * j);
@@ -94,10 +102,32 @@ function getRandomArrayInt(max,num){
   return anslist.sort(function(a, b) {  return a - b;});	
   }
 
+function verifiedaa(units_name){
+ var aachbox=document.getElementById('aaoption').checked;
+ if (!aachbox){
+   return true;
+ }
+ 
+ for (var i=0; i<units_name.length; i++){
+  if (aaunits.has(units_name[i])){
+    return true;
+  }
+ } 
+ return false; 
+}
+
 function rndgdi(){
-  var gdi_commander_id=randInt(0,gdicommanders.length)
+  var verified_deck=false;
+  while (!verified_deck){
+   var gdi_commander_id=randInt(0,gdicommanders.length)
+   var gdi_units_indexes=getRandomArrayInt(gdiunits.length,6);
+   var units_name=[gdiunits[gdi_units_indexes[0]],gdiunits[gdi_units_indexes[1]],gdiunits[gdi_units_indexes[2]],gdiunits[gdi_units_indexes[3]],gdiunits[gdi_units_indexes[4]],gdiunits[gdi_units_indexes[5]]]
+   verified_deck=true;   
+   if (!verifiedaa(units_name)){
+     verified_deck=false;
+   }
+  }
   document.getElementById("gdi0").innerHTML = gdicommanders[gdi_commander_id];
-  var gdi_units_indexes=getRandomArrayInt(gdiunits.length,6);
   document.getElementById("gdi1").innerHTML = gdiunits[gdi_units_indexes[0]];
   document.getElementById("gdi2").innerHTML = gdiunits[gdi_units_indexes[1]];
   document.getElementById("gdi3").innerHTML = gdiunits[gdi_units_indexes[2]];
@@ -107,10 +137,17 @@ function rndgdi(){
 }
 
 function rndnod(){
-  var nod_commander_id=randInt(0,nodcommanders.length)
+  var verified_deck=false;
+  while (!verified_deck){
+   var nod_commander_id=randInt(0,nodcommanders.length)
+   var nod_units_indexes=getRandomArrayInt(nodunits.length,6);
+   var units_name=[nodunits[nod_units_indexes[0]],nodunits[nod_units_indexes[1]],nodunits[nod_units_indexes[2]],nodunits[nod_units_indexes[3]],nodunits[nod_units_indexes[4]],nodunits[nod_units_indexes[5]]]
+   verified_deck=true;   
+   if (!verifiedaa(units_name)){
+     verified_deck=false;
+   }
+  }
   document.getElementById("nod0").innerHTML = nodcommanders[nod_commander_id];
-  var nod_units_indexes=getRandomArrayInt(nodunits.length,6);
-  console.log(nod_units_indexes);
   document.getElementById("nod1").innerHTML = nodunits[nod_units_indexes[0]];
   document.getElementById("nod2").innerHTML = nodunits[nod_units_indexes[1]];
   document.getElementById("nod3").innerHTML = nodunits[nod_units_indexes[2]];
