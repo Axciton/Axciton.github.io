@@ -1,5 +1,74 @@
 <!DOCTYPE html>
 <html>
+
+<style>
+:root {
+    --rotangle: 720deg; 
+    --color1: blue;
+    --color2: red;
+}
+
+body {
+  background-color: Azure ;
+}
+
+.gdidiv {
+  background-color: #9999FF;
+  width: 200px;
+  height: 260px;
+
+}
+.noddiv {
+  background-color:  	#FF9999;
+  width: 200px;
+  height: 260px;
+}
+
+.scene {
+  width: 200px;
+  height: 260px;
+  border: 1px solid #CCC;
+  margin: 40px 0;
+  perspective: 600px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.card.isflipped {
+  transform: rotateY(var(--rotangle));
+}
+
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 260px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card__face--front {
+  background: var(--color1);
+}
+
+.card__face--back {
+  background: var(--color2);
+  transform: rotateY(180deg);
+}
+
+</style>
+
 <body>
  <title>Random deck generator</title>
 <h2>Random deck generator</h2>
@@ -11,26 +80,44 @@ Tired of playing the same meta decks again and again. Here are some totally uniq
 check that at least one unit shoots up
 </input>
 </p>
-<div id="GDI"></div>
+
+
+
+
+<!-- 
 <p>
-<b>GDI</b>
-<p>
-<button type="rndgdi" onclick="rndgdi()">randomize GDI deck</button>
+
+<input type="checkbox" name="weights" id="weights" >
+use 13lade tier list (only units! S and A-tier weight=3 B-tier weight=2 C- and D-tier weight=1)
+
+</input>
 </p>
+-->
+
+
+
 <table>
-<tr><td id="gdi0"> 1</td></tr>
-<tr><td id="gdi1"> 1</td></tr>
-<tr><td id="gdi2"> 1</td></tr>
-<tr><td id="gdi3"> 1</td></tr>
-<tr><td id="gdi4"> 1</td></tr>
-<tr><td id="gdi5"> 1</td></tr>
-<tr><td id="gdi6"> 1</td></tr>
-</table>
-</p>
+ <tr><td>
+  <div id="GDI" class="gdidiv">
+   <p>
+    <b>GDI</b>
+   <p>
+    <button type="rndgdi" onclick="rndgdi()">randomize GDI deck</button>
+   </p>
+   <table>
+    <tr><td id="gdi0"> 1</td></tr>
+    <tr><td id="gdi1"> 1</td></tr>
+    <tr><td id="gdi2"> 1</td></tr>
+    <tr><td id="gdi3"> 1</td></tr>
+    <tr><td id="gdi4"> 1</td></tr>
+    <tr><td id="gdi5"> 1</td></tr>
+    <tr><td id="gdi6"> 1</td></tr>
+   </table>
+  </div>
+</td>
 
-
-
-<div id="NOD"></div>
+<td>
+<div id="NOD" class="noddiv">
 <p>
 <b>NOD</b>
 <p>
@@ -45,25 +132,51 @@ check that at least one unit shoots up
 <tr><td id="nod5"> 1</td></tr>
 <tr><td id="nod6"> 1</td></tr>
 </table>
+</div>
+</td>
+</tr>
 
+</table>
 
 <p>
-What faction to play?
-<p id="faction">
+Can't choose what faction to play?
+
+<!---<p id="faction">
 1
+</p>--->
 </p>
+
 <button type="rndgdi" onclick="rndfaction()">randomize faction</button>
-</p>
 
 
-</p>
+
+
+<div class="scene scene--card">
+  <div id="fcard" class="card">
+    <div class="card__face card__face--front" id="faction1">GDI</div>
+    <div class="card__face card__face--back"  id="faction2">NOD</div>
+  </div>
+</div>
+
  <script>
-var factions_list = ['play <b>GDI</b>', 'play <b>NOD</b>'];
+let root = document.documentElement;
+
+
+var card = document.querySelector('.card');
+card.addEventListener( 'click', function() {
+  rndfaction();
+});
+
+
+var factions_list = ['GDI', 'NOD'];
 var gdicommanders = ['Lt. Strongarm', 'Dr. Liang','Gen. Solomon','Col. Jackson'];
 var gdiunits=['Riflemen','Missle Squad',' MG Squad','Jump Jet Troopers','Shockwave Troopers',' Sniper Team','Grenadier','War Dogs','Rhino','M.S.V.','Pitbull','Shatterer','Slingshot','M.L.R.S.','Predator Tank','A.P.C.','Drone Swarm','Talon','Mohawk Gunship','Razorback','Orca','Hammerhead','Orca Bomber','Wolverine','Disruptor','Juggernaut','Zone Trooper','Kodiak','Sandstorm','Titan','Mammonth Tank'];
 
 var nodcommanders = ['Seth', 'Kane','Jade','Oxanna'];
-var nodunits=['Militant','Laser Squad','Fanatic','Scavenger','Flame Troopers','Scarabs','Chemical Warriors','Mutant Marauder','Cyberwheel','Attack Bikes','Buggy','Chem Buggy','Scorpion Tank','Tick Tank','Giga-Cannon','Stealth Tank','Laser Drone','Venom','Banshee','Inferno','Phantom','Widowmaker','Flame Tank','Centurion','Confessor','Artillery','Basilisk','Rockworm','Cyborg','Avatar'];
+
+var nodunits=['Militant','Laser Squad','Fanatic','Scavenger','Flame Troopers','Scarabs','Chemical Warriors','Mutant Marauder','Cyberwheel','Attack Bikes','Buggy','Chem Buggy','Scorpion Tank','Tick Tank','Giga-Cannon','Stealth Tank','Laser Drone','Venom','Shade','Banshee','Inferno','Phantom','Widowmaker','Flame Tank','Centurion','Confessor','Artillery','Basilisk','Rockworm','Cyborg','Avatar'];
+
+
 
 var aaunits= new Set(['Missle Squad', 'Rhino','Pitbull','Slingshot','A.P.C.','Talon','Hammerhead','Wolverine','Zone Trooper','Sandstorm','Mammonth Tank'
 ,'Laser Squad','Scavenger','Scarabs','Attack Bikes','Buggy','Stealth Tank','Banshee','Phantom','Widowmaker','Confessor','Cyborg'
@@ -116,49 +229,118 @@ function verifiedaa(units_name){
  return false; 
 }
 
+var gdi_commander_id=randInt(0,gdicommanders.length);
+var gdi_units_indexes=getRandomArrayInt(gdiunits.length,6);
+var nod_commander_id=randInt(0,nodcommanders.length)
+var nod_units_indexes=getRandomArrayInt(nodunits.length,6);
+
+
+let gdistart = Date.now();
+function gdianimation() {
+    let timePassed = Date.now() - gdistart;
+    document.getElementById("gdi0").innerHTML = gdicommanders[randInt(0,gdicommanders.length)];
+    document.getElementById("gdi1").innerHTML = gdiunits[randInt(0,gdiunits.length)];
+    document.getElementById("gdi2").innerHTML = gdiunits[randInt(0,gdiunits.length)];
+    document.getElementById("gdi3").innerHTML = gdiunits[randInt(0,gdiunits.length)];
+    document.getElementById("gdi4").innerHTML = gdiunits[randInt(0,gdiunits.length)];
+    document.getElementById("gdi5").innerHTML = gdiunits[randInt(0,gdiunits.length)];
+    document.getElementById("gdi6").innerHTML = gdiunits[randInt(0,gdiunits.length)];
+
+    if (timePassed > 800){       
+      document.getElementById("gdi0").innerHTML = gdicommanders[gdi_commander_id];
+      document.getElementById("gdi1").innerHTML = gdiunits[gdi_units_indexes[0]];
+      document.getElementById("gdi2").innerHTML = gdiunits[gdi_units_indexes[1]];
+      document.getElementById("gdi3").innerHTML = gdiunits[gdi_units_indexes[2]];
+      document.getElementById("gdi4").innerHTML = gdiunits[gdi_units_indexes[3]];
+      document.getElementById("gdi5").innerHTML = gdiunits[gdi_units_indexes[4]];  
+      document.getElementById("gdi6").innerHTML = gdiunits[gdi_units_indexes[5]];    
+      clearInterval(gditimer);
+    }
+}
+
+let gditimer = setInterval(gdianimation, 40);
+   
+
 function rndgdi(){
+  gdistart = Date.now();
+  gditimer = setInterval(gdianimation, 40);
+ 
   var verified_deck=false;
+  gdi_commander_id=randInt(0,gdicommanders.length);
   while (!verified_deck){
-   var gdi_commander_id=randInt(0,gdicommanders.length)
-   var gdi_units_indexes=getRandomArrayInt(gdiunits.length,6);
+   gdi_units_indexes=getRandomArrayInt(gdiunits.length,6);
    var units_name=[gdiunits[gdi_units_indexes[0]],gdiunits[gdi_units_indexes[1]],gdiunits[gdi_units_indexes[2]],gdiunits[gdi_units_indexes[3]],gdiunits[gdi_units_indexes[4]],gdiunits[gdi_units_indexes[5]]]
    verified_deck=true;   
    if (!verifiedaa(units_name)){
      verified_deck=false;
    }
   }
-  document.getElementById("gdi0").innerHTML = gdicommanders[gdi_commander_id];
-  document.getElementById("gdi1").innerHTML = gdiunits[gdi_units_indexes[0]];
-  document.getElementById("gdi2").innerHTML = gdiunits[gdi_units_indexes[1]];
-  document.getElementById("gdi3").innerHTML = gdiunits[gdi_units_indexes[2]];
-  document.getElementById("gdi4").innerHTML = gdiunits[gdi_units_indexes[3]];
-  document.getElementById("gdi5").innerHTML = gdiunits[gdi_units_indexes[4]];  
-  document.getElementById("gdi6").innerHTML = gdiunits[gdi_units_indexes[5]];
+
+
+
 }
 
+
+let nodstart = Date.now();
+function nodanimation() {
+    let timePassed = Date.now() - nodstart;
+    document.getElementById("nod0").innerHTML = nodcommanders[randInt(0,nodcommanders.length)];
+    document.getElementById("nod1").innerHTML = nodunits[randInt(0,nodunits.length)];
+    document.getElementById("nod2").innerHTML = nodunits[randInt(0,nodunits.length)];
+    document.getElementById("nod3").innerHTML = nodunits[randInt(0,nodunits.length)];
+    document.getElementById("nod4").innerHTML = nodunits[randInt(0,nodunits.length)];
+    document.getElementById("nod5").innerHTML = nodunits[randInt(0,nodunits.length)];
+    document.getElementById("nod6").innerHTML = nodunits[randInt(0,nodunits.length)];
+
+    if (timePassed > 800){       
+      document.getElementById("nod0").innerHTML = nodcommanders[nod_commander_id];
+      document.getElementById("nod1").innerHTML = nodunits[nod_units_indexes[0]];
+      document.getElementById("nod2").innerHTML = nodunits[nod_units_indexes[1]];
+      document.getElementById("nod3").innerHTML = nodunits[nod_units_indexes[2]];
+      document.getElementById("nod4").innerHTML = nodunits[nod_units_indexes[3]];
+      document.getElementById("nod5").innerHTML = nodunits[nod_units_indexes[4]];  
+      document.getElementById("nod6").innerHTML = nodunits[nod_units_indexes[5]];
+ 
+      clearInterval(nodtimer);
+    }
+}
+
+let nodtimer = setInterval(nodanimation, 40);
+
 function rndnod(){
+  nodstart = Date.now();
+  nodtimer = setInterval(nodanimation, 40);
+  
   var verified_deck=false;
+  nod_commander_id=randInt(0,nodcommanders.length)
   while (!verified_deck){
-   var nod_commander_id=randInt(0,nodcommanders.length)
-   var nod_units_indexes=getRandomArrayInt(nodunits.length,6);
-   var units_name=[nodunits[nod_units_indexes[0]],nodunits[nod_units_indexes[1]],nodunits[nod_units_indexes[2]],nodunits[nod_units_indexes[3]],nodunits[nod_units_indexes[4]],nodunits[nod_units_indexes[5]]]
+   nod_units_indexes=getRandomArrayInt(nodunits.length,6);
+   var units_name=[nodunits[nod_units_indexes[0]],nodunits[nod_units_indexes[1]],nodunits[nod_units_indexes[2]],nodunits[nod_units_indexes[3]],nodunits[nod_units_indexes[4]],nodunits[nod_units_indexes[5]]];   
    verified_deck=true;   
    if (!verifiedaa(units_name)){
      verified_deck=false;
    }
   }
-  document.getElementById("nod0").innerHTML = nodcommanders[nod_commander_id];
-  document.getElementById("nod1").innerHTML = nodunits[nod_units_indexes[0]];
-  document.getElementById("nod2").innerHTML = nodunits[nod_units_indexes[1]];
-  document.getElementById("nod3").innerHTML = nodunits[nod_units_indexes[2]];
-  document.getElementById("nod4").innerHTML = nodunits[nod_units_indexes[3]];
-  document.getElementById("nod5").innerHTML = nodunits[nod_units_indexes[4]];  
-  document.getElementById("nod6").innerHTML = nodunits[nod_units_indexes[5]];
 }
 
 
 function rndfaction(){
- document.getElementById("faction").innerHTML = factions_list[randInt(0,2)];
+ var factionnum=randInt(0,2);
+ document.getElementById("faction1").innerHTML = factions_list[factionnum];
+ console.log(factions_list[factionnum]);
+ document.getElementById("faction2").innerHTML = factions_list[(factionnum+1)%2];
+ root.style.setProperty('--rotangle',(randInt(0,3)*360+720) + "deg");
+ if (factionnum==0){
+   root.style.setProperty('--color1', "blue");
+   root.style.setProperty('--color2', "red");
+ }
+ if (factionnum==1){
+   root.style.setProperty('--color2', "blue");
+   root.style.setProperty('--color1', "red");
+ }
+
+ document.getElementById("fcard").classList.toggle('isflipped');
+ 
 }
 
 rndgdi();
