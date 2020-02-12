@@ -134,10 +134,15 @@ body {
 Tired of playing the same meta decks again and again. Here are some totally unique randomly generated decks. Have fun!
 </p>
 <p>
-<input type="checkbox" name="aaoption" id="aaoption" checked>
-check that at least one unit shoots up
-</input>
+<input type="checkbox" name="aaoption" id="aaoption" checked></input>
+check that at least <b><span id="aanum">2</span></b>
+<button onclick="aachange(1)">+</button>
+<button onclick="aachange(-1)">-</button>
+
+ unit(s) shoots up (min 1; max 3)
+
 </p>
+
 
 
 <p>
@@ -274,6 +279,8 @@ Can't choose what faction to play?
 
  <script>
 var wbutton = document.getElementById("wbutton");
+var aamaxnumber =2;
+
 
 
 wbutton.addEventListener("click", function() {    
@@ -286,7 +293,16 @@ wbutton.addEventListener("click", function() {
     }
   });
  
-
+function aachange(i){
+ aamaxnumber=aamaxnumber+i;
+ if (aamaxnumber>3){
+   aamaxnumber=3;
+ }
+ if (aamaxnumber<1){
+   aamaxnumber=1;
+ }
+ document.getElementById("aanum").innerHTML=""+aamaxnumber;
+}
 
 let root = document.documentElement;
 
@@ -565,12 +581,15 @@ function verifiedaa(units_name){
  if (!aachbox){
    return true;
  }
- 
+ var aaunitnum=0;
  for (var i=0; i<units_name.length; i++){
   if (aaunits.has(units_name[i])){
-    return true;
-  }
+    aaunitnum=aaunitnum+1;
+  }  
  } 
+ if (aaunitnum>=aamaxnumber){
+  return true;
+ }
  return false; 
 }
 
