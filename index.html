@@ -3,7 +3,7 @@
 
 <style>
 :root {
-    --rotangle: 720deg; 
+    --rotangle: 720deg;
     --color1: blue;
     --color2: red;
 }
@@ -182,7 +182,7 @@ use weights to balance units
 </td></table>
 
 
-</div> 
+</div>
 
 </p>
 
@@ -194,7 +194,7 @@ use weights to balance units
   <div id="GDI" class="gdidiv">
    <p>
     <b>GDI</b>
-    
+
    <p>
     <button type="rndgdi" class="mybutton" onclick="rndgdi()">randomize GDI deck</button>
    </p>
@@ -205,7 +205,7 @@ use weights to balance units
     <img id="gdiimg3" src="https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/3/3e/CNCRiv_Militant.png/150px-CNCRiv_Militant.png?version=0616376349883e64492e0ba56afbf780" alt="pic" width="64"/>
     <img id="gdiimg4" src="https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/3/3e/CNCRiv_Militant.png/150px-CNCRiv_Militant.png?version=0616376349883e64492e0ba56afbf780" alt="pic" width="64"/>
     <img id="gdiimg5" src="https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/3/3e/CNCRiv_Militant.png/150px-CNCRiv_Militant.png?version=0616376349883e64492e0ba56afbf780" alt="pic" width="64"/>
-    <img id="gdiimg6" src="https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/3/3e/CNCRiv_Militant.png/150px-CNCRiv_Militant.png?version=0616376349883e64492e0ba56afbf780" alt="pic" width="64"/>  
+    <img id="gdiimg6" src="https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/3/3e/CNCRiv_Militant.png/150px-CNCRiv_Militant.png?version=0616376349883e64492e0ba56afbf780" alt="pic" width="64"/>
     </div>
    <table>
     <tr>
@@ -222,8 +222,8 @@ use weights to balance units
     <tr><td id="gdi5"> 1</td></tr>
     <tr><td id="gdi6"> 1</td></tr>
    </table>
-    
-  </div>      
+
+  </div>
 </td>
 
 <td>
@@ -241,7 +241,7 @@ use weights to balance units
 <img id="nodimg3" src="https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/3/3e/CNCRiv_Militant.png/150px-CNCRiv_Militant.png?version=0616376349883e64492e0ba56afbf780" alt="pic" width="64"/>
 <img id="nodimg4" src="https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/3/3e/CNCRiv_Militant.png/150px-CNCRiv_Militant.png?version=0616376349883e64492e0ba56afbf780" alt="pic" width="64"/>
 <img id="nodimg5" src="https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/3/3e/CNCRiv_Militant.png/150px-CNCRiv_Militant.png?version=0616376349883e64492e0ba56afbf780" alt="pic" width="64"/>
-<img id="nodimg6" src="https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/3/3e/CNCRiv_Militant.png/150px-CNCRiv_Militant.png?version=0616376349883e64492e0ba56afbf780" alt="pic" width="64"/>  
+<img id="nodimg6" src="https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/3/3e/CNCRiv_Militant.png/150px-CNCRiv_Militant.png?version=0616376349883e64492e0ba56afbf780" alt="pic" width="64"/>
 </div>
 
 <table>
@@ -283,16 +283,16 @@ var aamaxnumber =2;
 
 
 
-wbutton.addEventListener("click", function() {    
+wbutton.addEventListener("click", function() {
     wbutton.classList.toggle("active");
-    var content = document.getElementById("weightslist");    
+    var content = document.getElementById("weightslist");
     if (content.style.display === "block") {
       content.style.display = "none";
     } else {
-      content.style.display = "block";    
+      content.style.display = "block";
     }
   });
- 
+
 function aachange(i){
  aamaxnumber=aamaxnumber+i;
  if (aamaxnumber>3){
@@ -370,8 +370,9 @@ var nodunits=[
  ['Stealth Tank',4],
  ['Laser Drone',4],
  ['Venom',4],
- ['Shade',5],
+ ['Catalyst Gunship',5],
  ['Banshee',4],
+ ['Shade',5],
  ['Inferno',3],
  ['Phantom',4],
  ['Widowmaker',1],
@@ -408,8 +409,9 @@ const imgmap=new Map([
 [ "Stealth Tank",  "https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/f/f1/CNCRiv_Stealth_Tank.png/150px-CNCRiv_Stealth_Tank.png?version=b6d6d7f2fbccd0f45dcec26d9c3fe9b4"],
 [ "Laser Drone",  "https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/1/19/CNCRiv_Laser_Drone.png/150px-CNCRiv_Laser_Drone.png?version=4c2264a1a288bacad27bfeba57b3eb24"],
 [ "Venom",  "https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/4/40/CNCRiv_Venom.png/150px-CNCRiv_Venom.png?version=0e9c28ce8b390a8e37ae5a5cc29c70e7"],
-[ "Shade",  "https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/0/09/CNCRiv_Shade.png/150px-CNCRiv_Shade.png?version=b210d4e81257ef42e03725a5b58b730b"],
+[ "Catalyst Gunship",  "https://static.wikia.nocookie.net/cnc_gamepedia_en/images/e/e9/CNCRiv_Catalyst_Gunship.png/revision/latest/scale-to-width-down/270?cb=20200620075712"],
 [ "Banshee",  "https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/d/d6/CNCRiv_Banshee.png/150px-CNCRiv_Banshee.png?version=35f89af7a3973afa114c437cec37d9c0"],
+[ "Shade",  "https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/0/09/CNCRiv_Shade.png/150px-CNCRiv_Shade.png?version=b210d4e81257ef42e03725a5b58b730b"],
 [ "Inferno",  "https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/6/67/CNCRiv_Inferno.png/150px-CNCRiv_Inferno.png?version=dea3d7d3b995df0995b144b6a6687b89"],
 [ "Phantom",  "https://gamepedia.cursecdn.com/cnc_gamepedia_en/thumb/8/8e/CNCRiv_Phantom.png/150px-CNCRiv_Phantom.png?version=dbab8b5251693f84a012034848340e88"],
 [ "Widowmaker",  "https://gamepedia.cursecdn.com/cnc_gamepedia_en/5/58/CNCRiv_Widowmaker.png?version=647b1fe7d05e875305077d9fc8635497"],
@@ -511,19 +513,19 @@ function randInt(i,j) {
 }
 
 function sampleS(n, m) {
-   let s = new Set();  
+   let s = new Set();
    while(s.size < m) {
       s.add(randInt(1,n));
    }
-   return s;  
+   return s;
 }
 
 function sampleF2(n, m) {
     let s = new Set();
-    for (let j = n - m + 1; j <= n; j++) { 
+    for (let j = n - m + 1; j <= n; j++) {
         const t = randInt(1, j);
         s.add( s.has(t) ? j : t );
-    }    
+    }
     return s;
 }
 
@@ -535,7 +537,7 @@ function getRandomArrayInt(max,num){
   for (var i=0; i<anslist.length; i++){
     anslist[i]=anslist[i]-1;
   }
-  return anslist.sort(function(a, b) {  return a - b;});	
+  return anslist.sort(function(a, b) {  return a - b;});
 }
 
 function sampleW(listw, m) {
@@ -585,12 +587,12 @@ function verifiedaa(units_name){
  for (var i=0; i<units_name.length; i++){
   if (aaunits.has(units_name[i])){
     aaunitnum=aaunitnum+1;
-  }  
- } 
+  }
+ }
  if (aaunitnum>=aamaxnumber){
   return true;
  }
- return false; 
+ return false;
 }
 
 var gdi_commander_id=randInt(0,gdicommanders.length);
@@ -608,13 +610,13 @@ function stub(){
 function gdianimation() {
     let timePassed = Date.now() - gdistart;
     var gdinameslist=[gdicommanders[randInt(0,gdicommanders.length)], gdiunits[randInt(0,gdiunits.length)][0],
-                      gdiunits[randInt(0,gdiunits.length)][0], gdiunits[randInt(0,gdiunits.length)][0], gdiunits[randInt(0,gdiunits.length)][0], gdiunits[randInt(0,gdiunits.length)][0], gdiunits[randInt(0,gdiunits.length)][0]]; 
-    
+                      gdiunits[randInt(0,gdiunits.length)][0], gdiunits[randInt(0,gdiunits.length)][0], gdiunits[randInt(0,gdiunits.length)][0], gdiunits[randInt(0,gdiunits.length)][0], gdiunits[randInt(0,gdiunits.length)][0]];
 
-    if (timePassed > 800){    
+
+    if (timePassed > 800){
      gdinameslist=[gdicommanders[gdi_commander_id],gdiunits[gdi_units_indexes[0]][0],
                     gdiunits[gdi_units_indexes[1]][0],gdiunits[gdi_units_indexes[2]][0],gdiunits[gdi_units_indexes[3]][0],gdiunits[gdi_units_indexes[4]][0],gdiunits[gdi_units_indexes[5]][0]];
-    
+
       clearInterval(gditimer);
      }
 
@@ -632,24 +634,24 @@ function gdianimation() {
      imgt.setAttribute("width","64");
      imglist.appendChild(imgt);
     }
-    
+
 
 
 
 }
 
-   
+
 
 function rndgdi(){
   gdistart = Date.now();
   gditimer = setInterval(gdianimation, 100);
- 
+
   var verified_deck=false;
   gdi_commander_id=randInt(0,gdicommanders.length);
   while (!verified_deck){
    gdi_units_indexes=getRandomUnitsIndexes(gdiunits,6);
    var units_name=[gdiunits[gdi_units_indexes[0]][0],gdiunits[gdi_units_indexes[1]][0],gdiunits[gdi_units_indexes[2]][0],gdiunits[gdi_units_indexes[3]][0],gdiunits[gdi_units_indexes[4]][0],gdiunits[gdi_units_indexes[5]][0]]
-   verified_deck=true;   
+   verified_deck=true;
    if (!verifiedaa(units_name)){
      verified_deck=false;
    }
@@ -665,16 +667,16 @@ var nodtimer;
 function nodanimation() {
     let timePassed = Date.now() - nodstart;
     var nodnameslist=[nodcommanders[randInt(0,nodcommanders.length)], nodunits[randInt(0,nodunits.length)][0],
-                      nodunits[randInt(0,nodunits.length)][0], nodunits[randInt(0,nodunits.length)][0], nodunits[randInt(0,nodunits.length)][0], nodunits[randInt(0,nodunits.length)][0], nodunits[randInt(0,nodunits.length)][0]]; 
-    
-    if (timePassed > 800){       
+                      nodunits[randInt(0,nodunits.length)][0], nodunits[randInt(0,nodunits.length)][0], nodunits[randInt(0,nodunits.length)][0], nodunits[randInt(0,nodunits.length)][0], nodunits[randInt(0,nodunits.length)][0]];
+
+    if (timePassed > 800){
       nodnameslist=[nodcommanders[nod_commander_id],nodunits[nod_units_indexes[0]][0],
-                    nodunits[nod_units_indexes[1]][0],nodunits[nod_units_indexes[2]][0],nodunits[nod_units_indexes[3]][0],nodunits[nod_units_indexes[4]][0],nodunits[nod_units_indexes[5]][0]]; 
-     
- 
+                    nodunits[nod_units_indexes[1]][0],nodunits[nod_units_indexes[2]][0],nodunits[nod_units_indexes[3]][0],nodunits[nod_units_indexes[4]][0],nodunits[nod_units_indexes[5]][0]];
+
+
       clearInterval(nodtimer);
     }
-    
+
     var imglist=document.getElementById("nodimages");
     for (var i=0; i<7; i++){
      document.getElementById("nod"+i).innerHTML = nodnameslist[i];
@@ -690,19 +692,19 @@ function nodanimation() {
      imglist.appendChild(imgt);
     }
 
-   
+
 }
 
 function rndnod(){
   nodstart = Date.now();
   nodtimer = setInterval(nodanimation,100);
-  
+
   var verified_deck=false;
   nod_commander_id=randInt(0,nodcommanders.length)
   while (!verified_deck){
    nod_units_indexes=getRandomUnitsIndexes(nodunits,6);
-   var units_name=[nodunits[nod_units_indexes[0]][0],nodunits[nod_units_indexes[1]][0],nodunits[nod_units_indexes[2]][0],nodunits[nod_units_indexes[3]][0],nodunits[nod_units_indexes[4]][0],nodunits[nod_units_indexes[5]][0]];   
-   verified_deck=true;   
+   var units_name=[nodunits[nod_units_indexes[0]][0],nodunits[nod_units_indexes[1]][0],nodunits[nod_units_indexes[2]][0],nodunits[nod_units_indexes[3]][0],nodunits[nod_units_indexes[4]][0],nodunits[nod_units_indexes[5]][0]];
+   verified_deck=true;
    if (!verifiedaa(units_name)){
      verified_deck=false;
    }
@@ -713,7 +715,7 @@ function rndnod(){
 function rndfaction(){
  var factionnum=randInt(0,2);
  document.getElementById("faction1").innerHTML = factions_list[factionnum];
- 
+
  document.getElementById("faction2").innerHTML = factions_list[(factionnum+1)%2];
  root.style.setProperty('--rotangle',(randInt(0,3)*360+720) + "deg");
  if (factionnum==0){
@@ -726,15 +728,15 @@ function rndfaction(){
  }
 
  document.getElementById("fcard").classList.toggle('isflipped');
- 
+
 }
 
 rndgdi();
 rndnod();
 rndfaction();
 
-</script> 
+</script>
 
 
 </body>
-</html> 
+</html>
